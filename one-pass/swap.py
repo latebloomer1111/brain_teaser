@@ -2,24 +2,20 @@
 # Given an array of 1s and 0s arrange the 1s together and 0s together in a 
 # single scan of the array. Optimize the boundary conditions.
 
-# TODO: Why does adding else: in line 12-13 make it work
-
 
 def swap(l):
     zero,one = 0, len(l) -1 
     while (zero < one):
         if not l[zero]:
             zero += 1
-
-        ## putting else here makes everything work
-        if l[one]:
-            one -= 1
-        if l[zero] and (not l[one]):
-            temp = l[zero]
-            l[zero] = l[one]
-            l[one] = temp
+        else:               #Adding else here prevents both pointers moving at the same time
+            if l[one]:
+                one -= 1
+            if l[zero] and (not l[one]):
+                temp = l[zero]
+                l[zero] = l[one]
+                l[one] = temp
         print l, zero, one
-
     return l
 
 
